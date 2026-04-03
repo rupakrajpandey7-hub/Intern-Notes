@@ -1,13 +1,19 @@
-FROM php:8.1-apache
+FROM ubuntu:22.04
 
-RUN a2dismod mpm_event mpm_worker 2>/dev/null || true \
-    && a2enmod mpm_prefork rewrite
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    apache2 \
+    php \
+    libapache2-mod-php \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY . /var/www/html/
+RUN rm -f /var/www/html/index.html
 
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
 EXPOSE 80
 
-CMD ["apache2-foreground"]
+CMD ["apache2ctl", "-D", "FOREGROUND"]

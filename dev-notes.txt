@@ -1,0 +1,12 @@
+### INTERN NOTES - PROJECT ALPHA ###
+
+Tasks for today:
+1. Review the new staff login page at /staff-login.php
+2. Update firewall rules for the staging environment.
+3. Test the login mechanism using the temporary intern account:
+
+   username: tester
+   password: Test@123
+
+Note: Please remember to delete this file before the production deployment!
+- Mark (Lead Developer)

@@ -1,19 +1,14 @@
-FROM ubuntu:22.04
+FROM php:8.1-fpm-alpine
 
-ENV DEBIAN_FRONTEND=noninteractive
+RUN apk add --no-cache nginx
 
-RUN apt-get update && apt-get install -y \
-    apache2 \
-    php \
-    libapache2-mod-php \
-    && rm -rf /var/lib/apt/lists/*
-
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY . /var/www/html/
-RUN rm -f /var/www/html/index.html
 
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html
+RUN chown -R www-data:www-data /var/www/html
+
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
 EXPOSE 80
-
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+CMD ["/start.sh"]

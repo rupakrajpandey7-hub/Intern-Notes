@@ -39,7 +39,6 @@
         <p><strong>Challenge Objective:</strong> Discover the flag hidden within this web application. Begin by examining the source code and exploring the application structure.</p>
     </div>
 
-    <!-- TODO remove /dev-notes.txt before production -->
     
     <footer>
         &copy; 2026 Netanix CTF Platform. Hosted on Netanix Servers. All rights reserved. | Challenge: Intern Notes
